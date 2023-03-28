@@ -1,6 +1,7 @@
 <script>
-    import {addToCartInLocal,itemsInLocalCart,singleProductData} from "../controllers/product"
-    import { CartItemsStore ,getSingleProductStore} from '../controllers/store';
+import  Product from "../controllers/product"
+import { CartItemsStore ,getSingleProductStore} from '../controllers/store';
+  const productClass =new Product()
      export let picture ;
      export let product_id;
      export  let product_name ;
@@ -9,8 +10,8 @@
      let CartItems;
    const AddItemInCart=async()=>{
     let cart={product_id,picture,product_name,price}
-    CartItems=await addToCartInLocal(cart)
-    let totalData=await itemsInLocalCart()
+    CartItems=await productClass.addToCartInLocal(cart)
+    let totalData=await productClass.itemsInLocalCart()
     increment( totalData);
    }
 
@@ -19,11 +20,11 @@
 }
   //  export const handleCartOnClick=async()=>{
   //   let product=(await itemsInLocalCart())
-  //    cartItem=await product.length
+  //    cartItem=await product.lengths
   //   }
     
     export const getSingleProduct=async ()=>{
-      let result =await  singleProductData(product_id);
+      let result =await productClass. singleProductData(product_id);
       console.log(await result)
        getSingleProductStore.set(await result.data);
      }

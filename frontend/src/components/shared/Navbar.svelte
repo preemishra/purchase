@@ -1,9 +1,9 @@
 <script>
-  import {itemsInLocalCart} from "../../controllers/product"
   import {onMount} from 'svelte'
+  import  Product from "../../controllers/product"
   import { CartItemsStore } from '../../controllers/store';
+  const productClass =new Product()
   const logo="https://res.cloudinary.com/dgb9aajxo/image/upload/v1679737882/logo_ffaqcn.png";
-
 
   let cartItem;
   CartItemsStore.subscribe(value => {
@@ -12,7 +12,7 @@
 	});
   
   onMount(async()=> {
-    let product=(await itemsInLocalCart())
+    let product=(await productClass.itemsInLocalCart())
      cartItem=product
      increment(cartItem);
     })
@@ -22,7 +22,7 @@
 }
 
   export const navData=async (id)=>{
-   let singleProduct= await getSingleProductFromDb(id);
+   let singleProduct= await productClass.getSingleProductFromDb(id);
    console.log(singleProduct)
    return await singleProduct
 }

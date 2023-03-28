@@ -1,6 +1,7 @@
 <script>
-import {itemsInLocalCart} from "../controllers/product"
-import { CartItemsStore } from '../controllers/store';
+import  Product from "../controllers/product"
+import { CartItemsStore ,getSingleProductStore} from '../controllers/store';
+  const productClass =new Product()
 let cartItemData
   CartItemsStore.subscribe(value => {
 		let cartItem = value;

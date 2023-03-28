@@ -1,10 +1,11 @@
 <script>
     import Card from "./Card.svelte";
-    import {searchProduct} from "../controllers/product"
+    import  Product from "../controllers/product"
+  const productClass =new Product()
     let productList=[];
     let searchByName="";
     const searchValue=async ()=>{
-      let result =await searchProduct(searchByName);
+      let result =await productClass.searchProduct(searchByName);
       console.log(await result)
       productList=result.data
      }

@@ -2,16 +2,19 @@
   import Card from "./Card.svelte";
   import Navbar from "./shared/Navbar.svelte";
   import {onMount} from 'svelte'
-  import {allProduct,searchProduct} from "../controllers/product"
+   import  Product from "../controllers/product"
+  const productClass =new Product()
+  
+
   let productList=[];
   let searchByName="";
   onMount(async()=> {
-    let product=(await allProduct()).data
-    productList=await product
+    let product= await productClass.allProduct()
+    productList=await  product.data
     console.log(productList)
     })
      const searchValue=async ()=>{
-      let result =await searchProduct(searchByName);
+      let result =await productClass.searchProduct(searchByName);
       console.log(await result)
       productList=result.data
      }

@@ -1,7 +1,7 @@
 
 <script>
     import { createEventDispatcher } from "svelte";
-  import { allProduct } from "../controllers/product";
+  // import { allProduct } from "../controllers/product";
     const dispatch = createEventDispatcher();
     var email = "";
     var password = "";
